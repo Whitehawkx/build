@@ -16,6 +16,7 @@ Invoke ". build/envsetup.sh" from your shell to add the following functions to y
 - mka:      Builds using SCHED_BATCH on all processors
 - mbot:     Builds for all devices using the psuedo buildbot
 - mkapush:  Same as mka with the addition of adb pushing to the device.
+- taco:     Builds for a single device using the pseudo buildbot
 - reposync: Parallel repo sync using ionice and SCHED_BATCH
 
 Look at the source to view more functions. The complete list is:
@@ -1497,6 +1498,19 @@ function mkapush() {
             fi
             ;;
     esac
+}
+
+function taco() {
+    for sauce in "$@"
+    do
+        breakfast $sauce
+        if [ $? -eq 0 ]; then
+            croot
+            ./vendor/aokp/bot/build_device.sh aokp_$sauce-userdebug $sauce
+        else
+            echo "No such item in brunch menu. Try 'breakfast'"
+        fi
+    done
 }
 
 function reposync() {
