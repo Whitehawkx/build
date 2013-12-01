@@ -452,7 +452,7 @@ def WriteFullOTAPackage(input_zip, output_zip):
  # script.Print("*      \\ \\_\\ \\_\\ \\_____\\ \\_\\ \\_\\\\\\ \\_\\    *");
  # script.Print("*       \\/_/\\/_/\\/_____/\\/_/\\/_/ \\/_/    *");
  # script.Print("*                                        *");
-  script.Print("******************************************");
+ # script.Print("******************************************");
 
   behelitv = GetBuildProp("ro.behelit.version", OPTIONS.info_dict)
   if os.getenv("BEHELIT_BUILD") is not None:
@@ -463,9 +463,9 @@ def WriteFullOTAPackage(input_zip, output_zip):
     script.Print("*   Version: %s"%(build));
   else:
     build = GetBuildProp("ro.build.date", OPTIONS.info_dict)
-    script.Print("******************************************");
-    script.Print("************ UNOFFICIAL BUILD ************");
-    script.Print("******************************************");
+    script.Print("*****************************************");
+    script.Print("************ CRIMSON BEHELIT ************");
+    script.Print("*****************************************");
     script.Print("*   Compiled: %s"%(build));
 
   device = GetBuildProp("ro.product.device", OPTIONS.info_dict)
